@@ -5,6 +5,7 @@ package db_service;
 service DBService {
     rpc get_school_id (GetSchoolIdRequest) returns (GetSchoolIdResponse);
     rpc check_user_exists (CheckUserExistsRequest) returns (CheckUserExistsResponse);
+    rpc get_expire_time (GetExpireTimeRequest) returns (GetExpireTimeResponse);
 }
 
 message GetSchoolIdRequest {
@@ -24,4 +25,13 @@ message CheckUserExistsRequest {
 
 message CheckUserExistsResponse {
     bool exists = 1;
+}
+
+message GetExpireTimeRequest {
+    string school_user_id = 1;
+}
+
+message GetExpireTimeResponse {
+    int32 expire_time = 1;
+    int32 time_created = 2;
 }
