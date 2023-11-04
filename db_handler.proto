@@ -6,6 +6,7 @@ service DBService {
     rpc get_school_id (GetSchoolIdRequest) returns (GetSchoolIdResponse);
     rpc check_user_exists (CheckUserExistsRequest) returns (CheckUserExistsResponse);
     rpc get_expire_time (GetExpireTimeRequest) returns (GetExpireTimeResponse);
+    rpc get_uuid (GetUUIDRequest) returns (GetUUIDResponse);
 }
 
 message GetSchoolIdRequest {
@@ -34,4 +35,12 @@ message GetExpireTimeRequest {
 message GetExpireTimeResponse {
     int32 expire_time = 1;
     int32 time_created = 2;
+}
+
+message GetUUIDRequest {
+    string school_user_id = 1;
+}
+
+message GetUUIDResponse {
+    string uuid = 1;
 }

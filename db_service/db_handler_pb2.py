@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x64\x62_handler.proto\x12\ndb_service\"8\n\x12GetSchoolIdRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"M\n\x13GetSchoolIdResponse\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\x12\x11\n\tschool_id\x18\x03 \x01(\t\"0\n\x16\x43heckUserExistsRequest\x12\x16\n\x0eschool_user_id\x18\x01 \x01(\t\")\n\x17\x43heckUserExistsResponse\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\".\n\x14GetExpireTimeRequest\x12\x16\n\x0eschool_user_id\x18\x01 \x01(\t\"B\n\x15GetExpireTimeResponse\x12\x13\n\x0b\x65xpire_time\x18\x01 \x01(\x05\x12\x14\n\x0ctime_created\x18\x02 \x01(\x05\x32\x93\x02\n\tDBService\x12P\n\rget_school_id\x12\x1e.db_service.GetSchoolIdRequest\x1a\x1f.db_service.GetSchoolIdResponse\x12\\\n\x11\x63heck_user_exists\x12\".db_service.CheckUserExistsRequest\x1a#.db_service.CheckUserExistsResponse\x12V\n\x0fget_expire_time\x12 .db_service.GetExpireTimeRequest\x1a!.db_service.GetExpireTimeResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x64\x62_handler.proto\x12\ndb_service\"8\n\x12GetSchoolIdRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"M\n\x13GetSchoolIdResponse\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\x12\x11\n\tschool_id\x18\x03 \x01(\t\"0\n\x16\x43heckUserExistsRequest\x12\x16\n\x0eschool_user_id\x18\x01 \x01(\t\")\n\x17\x43heckUserExistsResponse\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\".\n\x14GetExpireTimeRequest\x12\x16\n\x0eschool_user_id\x18\x01 \x01(\t\"B\n\x15GetExpireTimeResponse\x12\x13\n\x0b\x65xpire_time\x18\x01 \x01(\x05\x12\x14\n\x0ctime_created\x18\x02 \x01(\x05\"(\n\x0eGetUUIDRequest\x12\x16\n\x0eschool_user_id\x18\x01 \x01(\t\"\x1f\n\x0fGetUUIDResponse\x12\x0c\n\x04uuid\x18\x01 \x01(\t2\xd8\x02\n\tDBService\x12P\n\rget_school_id\x12\x1e.db_service.GetSchoolIdRequest\x1a\x1f.db_service.GetSchoolIdResponse\x12\\\n\x11\x63heck_user_exists\x12\".db_service.CheckUserExistsRequest\x1a#.db_service.CheckUserExistsResponse\x12V\n\x0fget_expire_time\x12 .db_service.GetExpireTimeRequest\x1a!.db_service.GetExpireTimeResponse\x12\x43\n\x08get_uuid\x12\x1a.db_service.GetUUIDRequest\x1a\x1b.db_service.GetUUIDResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,6 +32,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_GETEXPIRETIMEREQUEST']._serialized_end=308
   _globals['_GETEXPIRETIMERESPONSE']._serialized_start=310
   _globals['_GETEXPIRETIMERESPONSE']._serialized_end=376
-  _globals['_DBSERVICE']._serialized_start=379
-  _globals['_DBSERVICE']._serialized_end=654
+  _globals['_GETUUIDREQUEST']._serialized_start=378
+  _globals['_GETUUIDREQUEST']._serialized_end=418
+  _globals['_GETUUIDRESPONSE']._serialized_start=420
+  _globals['_GETUUIDRESPONSE']._serialized_end=451
+  _globals['_DBSERVICE']._serialized_start=454
+  _globals['_DBSERVICE']._serialized_end=798
 # @@protoc_insertion_point(module_scope)
