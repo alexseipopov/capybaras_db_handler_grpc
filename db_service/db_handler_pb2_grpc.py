@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import db_handler_pb2 as db__handler__pb2
+import db_service.db_handler_pb2 as db__handler__pb2
 
 
 class DBServiceStub(object):
