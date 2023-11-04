@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x64\x62_handler.proto\x12\ndb_service\"8\n\x12GetSchoolIdRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"M\n\x13GetSchoolIdResponse\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\x12\x11\n\tschool_id\x18\x03 \x01(\t2]\n\tDBService\x12P\n\rget_school_id\x12\x1e.db_service.GetSchoolIdRequest\x1a\x1f.db_service.GetSchoolIdResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x64\x62_handler.proto\x12\ndb_service\"8\n\x12GetSchoolIdRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"M\n\x13GetSchoolIdResponse\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\x12\x11\n\tschool_id\x18\x03 \x01(\t\"0\n\x16\x43heckUserExistsRequest\x12\x16\n\x0eschool_user_id\x18\x01 \x01(\t\")\n\x17\x43heckUserExistsResponse\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x32\xbb\x01\n\tDBService\x12P\n\rget_school_id\x12\x1e.db_service.GetSchoolIdRequest\x1a\x1f.db_service.GetSchoolIdResponse\x12\\\n\x11\x63heck_user_exists\x12\".db_service.CheckUserExistsRequest\x1a#.db_service.CheckUserExistsResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -24,6 +24,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_GETSCHOOLIDREQUEST']._serialized_end=88
   _globals['_GETSCHOOLIDRESPONSE']._serialized_start=90
   _globals['_GETSCHOOLIDRESPONSE']._serialized_end=167
-  _globals['_DBSERVICE']._serialized_start=169
-  _globals['_DBSERVICE']._serialized_end=262
+  _globals['_CHECKUSEREXISTSREQUEST']._serialized_start=169
+  _globals['_CHECKUSEREXISTSREQUEST']._serialized_end=217
+  _globals['_CHECKUSEREXISTSRESPONSE']._serialized_start=219
+  _globals['_CHECKUSEREXISTSRESPONSE']._serialized_end=260
+  _globals['_DBSERVICE']._serialized_start=263
+  _globals['_DBSERVICE']._serialized_end=450
 # @@protoc_insertion_point(module_scope)

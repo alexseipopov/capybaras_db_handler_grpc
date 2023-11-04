@@ -4,6 +4,7 @@ package db_service;
 
 service DBService {
     rpc get_school_id (GetSchoolIdRequest) returns (GetSchoolIdResponse);
+    rpc check_user_exists (CheckUserExistsRequest) returns (CheckUserExistsResponse);
 }
 
 message GetSchoolIdRequest {
@@ -15,4 +16,12 @@ message GetSchoolIdResponse {
     string description = 1;
     int32 status = 2;
     string school_id = 3;
+}
+
+message CheckUserExistsRequest {
+    string school_user_id = 1;
+}
+
+message CheckUserExistsResponse {
+    bool exists = 1;
 }
