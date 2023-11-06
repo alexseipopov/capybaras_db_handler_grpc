@@ -64,13 +64,13 @@ message SetNewUserRequest {
     string school_user_id = 1;
     string uuid = 2;
     int32 expire_time = 3;
-    int32 time_created = 4;
-    string access_token = 5;
-    string refresh_token = 6;
-    string session_state = 7;
+    string access_token = 4;
+    string refresh_token = 5;
+    string session_state = 6;
 }
 
 message SetNewUserResponse {
     string description = 1;
     int32 status = 2;
+    string capy_uuid = 3;
 }
