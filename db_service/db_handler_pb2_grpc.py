@@ -39,6 +39,11 @@ class DBServiceStub(object):
                 request_serializer=db__handler__pb2.SetAccessDataRequest.SerializeToString,
                 response_deserializer=db__handler__pb2.SetAccessDataResponse.FromString,
                 )
+        self.set_new_user = channel.unary_unary(
+                '/db_service.DBService/set_new_user',
+                request_serializer=db__handler__pb2.SetNewUserRequest.SerializeToString,
+                response_deserializer=db__handler__pb2.SetNewUserResponse.FromString,
+                )
 
 
 class DBServiceServicer(object):
@@ -74,6 +79,12 @@ class DBServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def set_new_user(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DBServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -101,6 +112,11 @@ def add_DBServiceServicer_to_server(servicer, server):
                     servicer.set_access_data,
                     request_deserializer=db__handler__pb2.SetAccessDataRequest.FromString,
                     response_serializer=db__handler__pb2.SetAccessDataResponse.SerializeToString,
+            ),
+            'set_new_user': grpc.unary_unary_rpc_method_handler(
+                    servicer.set_new_user,
+                    request_deserializer=db__handler__pb2.SetNewUserRequest.FromString,
+                    response_serializer=db__handler__pb2.SetNewUserResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -194,5 +210,22 @@ class DBService(object):
         return grpc.experimental.unary_unary(request, target, '/db_service.DBService/set_access_data',
             db__handler__pb2.SetAccessDataRequest.SerializeToString,
             db__handler__pb2.SetAccessDataResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def set_new_user(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/db_service.DBService/set_new_user',
+            db__handler__pb2.SetNewUserRequest.SerializeToString,
+            db__handler__pb2.SetNewUserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
