@@ -63,7 +63,7 @@ message SetAccessDataResponse {
 message SetNewUserRequest {
     string school_user_id = 1;
     string uuid = 2;
-    int32 expire_time = 3;
+    int32 expires_in = 3;
     string access_token = 4;
     string refresh_token = 5;
     string session_state = 6;
