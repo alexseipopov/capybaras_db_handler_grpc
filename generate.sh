@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -I. --python_out=./db_service --grpc_python_out=./db_service db_handler.proto
