@@ -3,23 +3,12 @@ syntax = "proto3";
 package db_service;
 
 service DBService {
-    rpc get_school_id (GetSchoolIdRequest) returns (GetSchoolIdResponse);
     rpc check_user_exists (CheckUserExistsRequest) returns (CheckUserExistsResponse);
     rpc get_expire_time (GetExpireTimeRequest) returns (GetExpireTimeResponse);
     rpc get_uuid (GetUUIDRequest) returns (GetUUIDResponse);
     rpc set_access_data (SetAccessDataRequest) returns (SetAccessDataResponse);
     rpc set_new_user (SetNewUserRequest) returns (SetNewUserResponse);
-}
-
-message GetSchoolIdRequest {
-    string username = 1;
-    string password = 2;
-}
-
-message GetSchoolIdResponse {
-    string description = 1;
-    int32 status = 2;
-    string school_id = 3;
+    rpc get_access_token_by_uuid (GetAccessTokenByUUIDRequest) returns (GetAccessTokenByUUIDResponse);
 }
 
 message CheckUserExistsRequest {
@@ -73,4 +62,17 @@ message SetNewUserResponse {
     string description = 1;
     int32 status = 2;
     string capy_uuid = 3;
+}
+
+message GetAccessTokenByUUIDRequest {
+    string uuid = 1;
+}
+
+message GetAccessTokenByUUIDResponse {
+    string access_token = 1;
+    string school_user_id = 2;
+    int32 time_create = 3;
+    int32 expires_in = 4;
+    int32 status = 5;
+    string description = 6;
 }
