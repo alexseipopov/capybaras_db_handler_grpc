@@ -9,6 +9,7 @@ service DBService {
     rpc set_new_user (SetNewUserRequest) returns (SetNewUserResponse);
     rpc get_access_token_by_uuid (GetAccessTokenByUUIDRequest) returns (GetAccessTokenByUUIDResponse);
     rpc set_avatar (SetAvatarRequest) returns (SetAvatarResponse);
+    rpc get_avatar (GetAvatarRequest) returns (GetAvatarResponse);
 }
 
 message CheckUserExistsRequest {
@@ -76,4 +77,14 @@ message SetAvatarRequest {
 message SetAvatarResponse {
     string description = 1;
     int32 status = 2;
+}
+
+message GetAvatarRequest {
+    string uuid = 1;
+}
+
+message GetAvatarResponse {
+    string avatar = 1;
+    int32 status = 2;
+    string description = 3;
 }
