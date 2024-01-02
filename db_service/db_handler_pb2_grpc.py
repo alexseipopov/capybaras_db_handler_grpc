@@ -19,11 +19,6 @@ class DBServiceStub(object):
                 request_serializer=db__handler__pb2.CheckUserExistsRequest.SerializeToString,
                 response_deserializer=db__handler__pb2.CheckUserExistsResponse.FromString,
                 )
-        self.get_expire_time = channel.unary_unary(
-                '/db_service.DBService/get_expire_time',
-                request_serializer=db__handler__pb2.GetExpireTimeRequest.SerializeToString,
-                response_deserializer=db__handler__pb2.GetExpireTimeResponse.FromString,
-                )
         self.get_uuid = channel.unary_unary(
                 '/db_service.DBService/get_uuid',
                 request_serializer=db__handler__pb2.GetUUIDRequest.SerializeToString,
@@ -44,18 +39,17 @@ class DBServiceStub(object):
                 request_serializer=db__handler__pb2.GetAccessTokenByUUIDRequest.SerializeToString,
                 response_deserializer=db__handler__pb2.GetAccessTokenByUUIDResponse.FromString,
                 )
+        self.set_avatar = channel.unary_unary(
+                '/db_service.DBService/set_avatar',
+                request_serializer=db__handler__pb2.SetAvatarRequest.SerializeToString,
+                response_deserializer=db__handler__pb2.SetAvatarResponse.FromString,
+                )
 
 
 class DBServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def check_user_exists(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def get_expire_time(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -85,6 +79,12 @@ class DBServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def set_avatar(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DBServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -92,11 +92,6 @@ def add_DBServiceServicer_to_server(servicer, server):
                     servicer.check_user_exists,
                     request_deserializer=db__handler__pb2.CheckUserExistsRequest.FromString,
                     response_serializer=db__handler__pb2.CheckUserExistsResponse.SerializeToString,
-            ),
-            'get_expire_time': grpc.unary_unary_rpc_method_handler(
-                    servicer.get_expire_time,
-                    request_deserializer=db__handler__pb2.GetExpireTimeRequest.FromString,
-                    response_serializer=db__handler__pb2.GetExpireTimeResponse.SerializeToString,
             ),
             'get_uuid': grpc.unary_unary_rpc_method_handler(
                     servicer.get_uuid,
@@ -117,6 +112,11 @@ def add_DBServiceServicer_to_server(servicer, server):
                     servicer.get_access_token_by_uuid,
                     request_deserializer=db__handler__pb2.GetAccessTokenByUUIDRequest.FromString,
                     response_serializer=db__handler__pb2.GetAccessTokenByUUIDResponse.SerializeToString,
+            ),
+            'set_avatar': grpc.unary_unary_rpc_method_handler(
+                    servicer.set_avatar,
+                    request_deserializer=db__handler__pb2.SetAvatarRequest.FromString,
+                    response_serializer=db__handler__pb2.SetAvatarResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -142,23 +142,6 @@ class DBService(object):
         return grpc.experimental.unary_unary(request, target, '/db_service.DBService/check_user_exists',
             db__handler__pb2.CheckUserExistsRequest.SerializeToString,
             db__handler__pb2.CheckUserExistsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def get_expire_time(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/db_service.DBService/get_expire_time',
-            db__handler__pb2.GetExpireTimeRequest.SerializeToString,
-            db__handler__pb2.GetExpireTimeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -227,5 +210,22 @@ class DBService(object):
         return grpc.experimental.unary_unary(request, target, '/db_service.DBService/get_access_token_by_uuid',
             db__handler__pb2.GetAccessTokenByUUIDRequest.SerializeToString,
             db__handler__pb2.GetAccessTokenByUUIDResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def set_avatar(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/db_service.DBService/set_avatar',
+            db__handler__pb2.SetAvatarRequest.SerializeToString,
+            db__handler__pb2.SetAvatarResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

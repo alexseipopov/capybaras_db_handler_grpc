@@ -4,11 +4,11 @@ package db_service;
 
 service DBService {
     rpc check_user_exists (CheckUserExistsRequest) returns (CheckUserExistsResponse);
-    rpc get_expire_time (GetExpireTimeRequest) returns (GetExpireTimeResponse);
     rpc get_uuid (GetUUIDRequest) returns (GetUUIDResponse);
     rpc set_access_data (SetAccessDataRequest) returns (SetAccessDataResponse);
     rpc set_new_user (SetNewUserRequest) returns (SetNewUserResponse);
     rpc get_access_token_by_uuid (GetAccessTokenByUUIDRequest) returns (GetAccessTokenByUUIDResponse);
+    rpc set_avatar (SetAvatarRequest) returns (SetAvatarResponse);
 }
 
 message CheckUserExistsRequest {
@@ -17,15 +17,6 @@ message CheckUserExistsRequest {
 
 message CheckUserExistsResponse {
     bool exists = 1;
-}
-
-message GetExpireTimeRequest {
-    string school_user_id = 1;
-}
-
-message GetExpireTimeResponse {
-    int32 expire_time = 1;
-    int32 time_created = 2;
 }
 
 message GetUUIDRequest {
@@ -75,4 +66,14 @@ message GetAccessTokenByUUIDResponse {
     int32 expires_in = 4;
     int32 status = 5;
     string description = 6;
+}
+
+message SetAvatarRequest {
+    string uuid = 1;
+    string avatar = 2;
+}
+
+message SetAvatarResponse {
+    string description = 1;
+    int32 status = 2;
 }
