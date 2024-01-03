@@ -49,6 +49,11 @@ class DBServiceStub(object):
                 request_serializer=db__handler__pb2.GetAvatarRequest.SerializeToString,
                 response_deserializer=db__handler__pb2.GetAvatarResponse.FromString,
                 )
+        self.get_peer_info = channel.unary_unary(
+                '/db_service.DBService/get_peer_info',
+                request_serializer=db__handler__pb2.GetPeerInfoRequest.SerializeToString,
+                response_deserializer=db__handler__pb2.GetPeerInfoResponse.FromString,
+                )
 
 
 class DBServiceServicer(object):
@@ -96,6 +101,12 @@ class DBServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def get_peer_info(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DBServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -133,6 +144,11 @@ def add_DBServiceServicer_to_server(servicer, server):
                     servicer.get_avatar,
                     request_deserializer=db__handler__pb2.GetAvatarRequest.FromString,
                     response_serializer=db__handler__pb2.GetAvatarResponse.SerializeToString,
+            ),
+            'get_peer_info': grpc.unary_unary_rpc_method_handler(
+                    servicer.get_peer_info,
+                    request_deserializer=db__handler__pb2.GetPeerInfoRequest.FromString,
+                    response_serializer=db__handler__pb2.GetPeerInfoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -260,5 +276,22 @@ class DBService(object):
         return grpc.experimental.unary_unary(request, target, '/db_service.DBService/get_avatar',
             db__handler__pb2.GetAvatarRequest.SerializeToString,
             db__handler__pb2.GetAvatarResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def get_peer_info(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/db_service.DBService/get_peer_info',
+            db__handler__pb2.GetPeerInfoRequest.SerializeToString,
+            db__handler__pb2.GetPeerInfoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

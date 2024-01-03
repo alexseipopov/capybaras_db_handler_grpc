@@ -10,6 +10,7 @@ service DBService {
     rpc get_access_token_by_uuid (GetAccessTokenByUUIDRequest) returns (GetAccessTokenByUUIDResponse);
     rpc set_avatar (SetAvatarRequest) returns (SetAvatarResponse);
     rpc get_avatar (GetAvatarRequest) returns (GetAvatarResponse);
+    rpc get_peer_info (GetPeerInfoRequest) returns (GetPeerInfoResponse);
 }
 
 message CheckUserExistsRequest {
@@ -87,4 +88,19 @@ message GetAvatarResponse {
     string avatar = 1;
     int32 status = 2;
     string description = 3;
+}
+
+message GetPeerInfoRequest {
+    string request_uuid = 1;
+    string nickname = 2;
+}
+
+message GetPeerInfoResponse {
+    string avatar = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string login = 4;
+    string description = 5;
+    int32 status = 6;
+
 }
