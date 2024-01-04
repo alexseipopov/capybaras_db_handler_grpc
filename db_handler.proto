@@ -11,6 +11,7 @@ service DBService {
     rpc set_avatar (SetAvatarRequest) returns (SetAvatarResponse);
     rpc get_avatar (GetAvatarRequest) returns (GetAvatarResponse);
     rpc get_peer_info (GetPeerInfoRequest) returns (GetPeerInfoResponse);
+    rpc get_friend_stats (GetFriendStatsRequest) returns (GetFriendStatsResponse);
 }
 
 message CheckUserExistsRequest {
@@ -102,5 +103,15 @@ message GetPeerInfoResponse {
     string login = 4;
     string description = 5;
     int32 status = 6;
+}
 
+message GetFriendStatsRequest {
+    string uuid = 1;
+}
+
+message GetFriendStatsResponse {
+    int32 friends = 1;
+    int32 subscribers= 2;
+    int32 status = 3;
+    string description = 4;
 }
