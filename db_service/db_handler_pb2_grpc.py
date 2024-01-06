@@ -69,6 +69,16 @@ class DBServiceStub(object):
                 request_serializer=db__handler__pb2.AddFriendRequest.SerializeToString,
                 response_deserializer=db__handler__pb2.AddFriendResponse.FromString,
                 )
+        self.rocket_set_user = channel.unary_unary(
+                '/db_service.DBService/rocket_set_user',
+                request_serializer=db__handler__pb2.RocketSetUserRequest.SerializeToString,
+                response_deserializer=db__handler__pb2.RocketSetUserResponse.FromString,
+                )
+        self.rocket_get_user = channel.unary_unary(
+                '/db_service.DBService/rocket_get_user',
+                request_serializer=db__handler__pb2.RocketGetUserRequest.SerializeToString,
+                response_deserializer=db__handler__pb2.RocketGetUserResponse.FromString,
+                )
 
 
 class DBServiceServicer(object):
@@ -140,6 +150,18 @@ class DBServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def rocket_set_user(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def rocket_get_user(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DBServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -197,6 +219,16 @@ def add_DBServiceServicer_to_server(servicer, server):
                     servicer.add_friend,
                     request_deserializer=db__handler__pb2.AddFriendRequest.FromString,
                     response_serializer=db__handler__pb2.AddFriendResponse.SerializeToString,
+            ),
+            'rocket_set_user': grpc.unary_unary_rpc_method_handler(
+                    servicer.rocket_set_user,
+                    request_deserializer=db__handler__pb2.RocketSetUserRequest.FromString,
+                    response_serializer=db__handler__pb2.RocketSetUserResponse.SerializeToString,
+            ),
+            'rocket_get_user': grpc.unary_unary_rpc_method_handler(
+                    servicer.rocket_get_user,
+                    request_deserializer=db__handler__pb2.RocketGetUserRequest.FromString,
+                    response_serializer=db__handler__pb2.RocketGetUserResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -392,5 +424,39 @@ class DBService(object):
         return grpc.experimental.unary_unary(request, target, '/db_service.DBService/add_friend',
             db__handler__pb2.AddFriendRequest.SerializeToString,
             db__handler__pb2.AddFriendResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def rocket_set_user(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/db_service.DBService/rocket_set_user',
+            db__handler__pb2.RocketSetUserRequest.SerializeToString,
+            db__handler__pb2.RocketSetUserResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def rocket_get_user(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/db_service.DBService/rocket_get_user',
+            db__handler__pb2.RocketGetUserRequest.SerializeToString,
+            db__handler__pb2.RocketGetUserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

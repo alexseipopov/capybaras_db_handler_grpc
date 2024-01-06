@@ -14,6 +14,9 @@ service DBService {
     rpc get_friend_stats (GetFriendStatsRequest) returns (GetFriendStatsResponse);
     rpc search_user (SearchUserRequest) returns (SearchUserResponse);
     rpc add_friend (AddFriendRequest) returns (AddFriendResponse);
+
+    rpc rocket_set_user (RocketSetUserRequest) returns (RocketSetUserResponse);
+    rpc rocket_get_user (RocketGetUserRequest) returns (RocketGetUserResponse);
 }
 
 message CheckUserExistsRequest {
@@ -144,4 +147,26 @@ message AddFriendRequest {
 message AddFriendResponse {
     int32 status = 1;
     string description = 2;
+}
+
+message RocketSetUserRequest {
+    string uuid = 1;
+    string rocket_id = 2;
+    string token = 3;
+}
+
+message RocketSetUserResponse {
+    int32 status = 1;
+    string description = 2;
+}
+
+message RocketGetUserRequest {
+    string uuid = 1;
+}
+
+message RocketGetUserResponse {
+    string rocket_id = 1;
+    string token = 2;
+    int32 status = 3;
+    string description = 4;
 }
